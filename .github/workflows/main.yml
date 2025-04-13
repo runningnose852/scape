@@ -19,11 +19,12 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Runningggg (EXAMPLE)
+      - name: Push committed changes
         run: |
-          echo "Test line" >> README.md
           git config --global user.email "runningcalligraphy@gmail.com"
           git config --global user.name "Running Wong"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/runningnose852/scape.git
           git add README.md
           git commit -m "Add test line"
           git push
+
