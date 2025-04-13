@@ -26,7 +26,7 @@ jobs:
           mkdir -p google
           echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > google/credentials.json
 
-      - name: Run the scraper
-        env:
-          SHEET_ID: ${{ secrets.SHEET_ID }}
-        run: node scrape-and-log.js
+git add googlesheet.js
+git commit -m "Add scraper script"
+git push
+
