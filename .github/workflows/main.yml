@@ -26,7 +26,7 @@ jobs:
           mkdir -p google
           echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > google/credentials.json
 
-git add googlesheet.js
+git add scrape.js
 git commit -m "Add scraper script"
 git push
 
