@@ -71,3 +71,8 @@ async function scrapeData() {
 }
 
 scrapeData();
+// scraper/scrape.js
+module.exports = async function scrape() {
+  // your scraping logic here
+  return ['priceSelector', 'clubcardPriceSelector']; // sample return
+};
