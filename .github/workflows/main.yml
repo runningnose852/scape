@@ -1,0 +1,32 @@
+name: Run Scraper Every 30 Minutes
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Every 30 minutes
+  workflow_dispatch:        # Manual trigger
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Restore credentials.json
+        run: |
+          mkdir -p google
+          echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > google/credentials.json
+
+      - name: Run the scraper
+        env:
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+        run: node scrape-and-log.js
