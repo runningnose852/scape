@@ -1,9 +1,10 @@
-name: Run Scraper Every 30 Minutes
+name: Run Scraper
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'  # Every 30 minutes
-  workflow_dispatch:        # Manual trigger
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   run-scraper:
@@ -16,20 +17,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Restore credentials.json
+      - name: Runningggg (EXAMPLE)
         run: |
-          mkdir -p google
-          echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > google/credentials.json
-
-git add scrape.js
-git commit -m "Add scraper script"
-git push
-
-on:
-  workflow_dispatch:
-
+          echo "Test line" >> README.md
+          git config --global user.email "runningcalligraphy@gmail.com"
+          git config --global user.name "Running Wong
+          git add README.md
+          git commit -m "Add test line"
+          git push
