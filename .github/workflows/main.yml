@@ -30,3 +30,6 @@ git add scrape.js
 git commit -m "Add scraper script"
 git push
 
+on:
+  workflow_dispatch:
+
