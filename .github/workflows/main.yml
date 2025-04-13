@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "Test line" >> README.md
           git config --global user.email "runningcalligraphy@gmail.com"
-          git config --global user.name "Running Wong
+          git config --global user.name "Running Wong"
           git add README.md
           git commit -m "Add test line"
           git push
